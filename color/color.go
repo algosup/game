@@ -1,6 +1,6 @@
 package color
 
-import "image/color" as col
+import col "image/color"
 
 type Color col.Color
 
