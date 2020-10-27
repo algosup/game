@@ -1,12 +1,19 @@
 package game
 
 import (
+	_ "image/jpeg"
+	_ "image/png"
+
 	"github.com/algosup/game/color"
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/ebitenutil"
 )
 
 type Surface struct {
+	*ebiten.Image
+}
+
+type Bitmap struct {
 	*ebiten.Image
 }
 
@@ -27,4 +34,13 @@ func DrawRect(surface Surface, x int, y int, width int, height int, color color.
 
 func DrawText(surface Surface, text string, x int, y int) {
 	ebitenutil.DebugPrintAt(surface.Image, text, x, y)
+}
+
+func LoadBitmap(name string) (Bitmap, error) {
+	ei, _, e := ebitenutil.NewImageFromFile(name, ebiten.FilterDefault)
+	return Bitmap{ei}, e
+}
+
+func DrawBitmap(surface Surface, x int, y int, bitmap Bitmap) {
+	surface.Image.DrawImage(bitmap.Image, &ebiten.DrawImageOptions{GeoM: ebiten.TranslateGeo(float64(x), float64(y))})
 }
