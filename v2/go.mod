@@ -3,7 +3,7 @@ module github.com/algosup/game/v2
 go 1.14
 
 require (
-	github.com/algosup/game/v2/color v1.0.4
+	github.com/algosup/game/v2/color v2.0.0
 	github.com/hajimehoshi/ebiten v1.12.1
 	github.com/kr/text v0.2.0 // indirect
 	golang.org/x/exp v0.0.0-20201008143054-e3b2a7f2fdc7 // indirect
